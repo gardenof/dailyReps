@@ -1,7 +1,5 @@
 -- Module
-module TueKey
-  ( TueKey
-  ) where
+module TueKey where
 
 import qualified  Data.Text as T
 
@@ -107,3 +105,29 @@ tkMaoTKList funcationA2B listA =
 instance Functor TKList where
   fmap = tkMaoTKList
 
+data CarInfo = CarInfo
+  { carYear :: CarYear
+  , carMake :: CarMake
+  } deriving (Show)
+
+newtype CarYear = CarYear Int deriving Show
+
+newtype CarMake = CarMake T.Text deriving Show
+
+getCarYear :: CarInfo -> CarYear
+getCarYear carInfo =
+  carYear carInfo
+
+changeCarYear :: CarInfo -> CarYear -> CarInfo
+changeCarYear carInfo newCarYear =
+  carInfo { carYear =  newCarYear}
+
+changeCarMake :: CarInfo -> CarMake -> CarInfo
+changeCarMake carInfo newCarMake =
+  carInfo { carMake = newCarMake}
+
+tempCarInfo :: CarInfo
+tempCarInfo =
+  CarInfo { carYear = CarYear 1919
+          , carMake = CarMake $ T.pack "BigJim"
+          }
