@@ -95,3 +95,76 @@ mapMakeList functionBA2B listA =
 
 instance Functor MakeList where
   fmap = mapMakeList
+
+-- -- -- -- NEW NEW
+
+applyMaybe :: Maybe (a -> b) -> Maybe a -> Maybe b
+applyMaybe mFunctionA2B ma =
+  case ma of
+    Nothing -> Nothing
+    Just a ->
+      case mFunctionA2B of
+        Nothing -> Nothing
+        Just function -> Just $ function a
+
+applyMaybeV2 :: Maybe (a -> b) -> Maybe a -> Maybe b
+applyMaybeV2 mFunctionA2B ma =
+  case mFunctionA2B of
+    nothing -> Nothing
+    Just function ->
+      case ma of
+        Nothing -> Nothing
+        Just a -> Just $ function a
+-- I do not understadn the diff yet but I
+-- know there is, just need to look at it more.
+--
+-- Users/gardenof/Documents/dev/dailyReps/src/FriBoot.hs:114:5:
+--- warning: [-Woverlapping-patterns]
+--    Pattern match is redundant
+--    In a case alternative: Just function -> ...
+--    |
+--114 |     Just function ->
+--
+
+purMaybe :: a -> Maybe a
+purMaybe a =
+  Just a
+
+pureList :: a -> [a]
+pureList a =
+  [a]
+
+applyList :: [a -> b] -> [a] -> [b]
+applyList listOfFunctions listA =
+  case listOfFunctions of
+    [] -> []
+    (function:functionList) ->
+      case listA of
+        [] -> []
+        (x:xs) ->
+          function x : applyList functionList xs
+
+-- NEw new Two
+--
+member :: Maybe [String]
+member = Just ["something"]
+
+lengthOfEachMeber :: Maybe [String] -> Maybe [Int]
+lengthOfEachMeber maListString =
+  case maListString of
+    Nothing -> Nothing
+    Just listA ->
+      Just $ fmap length listA
+
+somthingOne :: [Maybe String]
+somthingOne =
+  [Just "String"]
+
+somethingTwo :: [Maybe String] -> [Maybe Int]
+somethingTwo listMaString =
+  case listMaString of
+    []     -> []
+    (x:xs) ->
+      case x of
+        Nothing     -> Nothing : somethingTwo xs
+        Just string -> (Just $ length string) : somethingTwo xs
