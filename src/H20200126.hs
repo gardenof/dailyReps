@@ -1,4 +1,4 @@
-module SunClass where
+module H20200126 () where
 
 import qualified  Data.Text as T
 

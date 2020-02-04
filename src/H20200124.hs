@@ -1,4 +1,4 @@
-module ThursdayApple where
+module H20200124 () where
 
 import qualified  Data.Text as T
 

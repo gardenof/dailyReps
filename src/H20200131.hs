@@ -1,6 +1,4 @@
-module FriBoot
-  (
-  ) where
+module H20200131 () where
 
 import qualified  Data.Text as T
 

@@ -1,4 +1,4 @@
-module Spoon where
+module H20200122 () where
 
 import qualified  Data.Text as T
 
