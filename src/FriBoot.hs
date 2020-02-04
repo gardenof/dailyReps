@@ -134,15 +134,16 @@ pureList :: a -> [a]
 pureList a =
   [a]
 
-applyList :: [a -> b] -> [a] -> [b]
-applyList listOfFunctions listA =
+zipList :: [a -> b] -> [a] -> [b]
+zipList listOfFunctions listA =
   case listOfFunctions of
     [] -> []
     (function:functionList) ->
       case listA of
         [] -> []
         (x:xs) ->
-          function x : applyList functionList xs
+          function x : zipList functionList xs
+
 
 -- NEw new Two
 --
