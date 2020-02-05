@@ -49,37 +49,72 @@ foldlfoldl funcitonBA2B b listA =
     [] -> b
     (x:xs) -> foldlfoldl funcitonBA2B (funcitonBA2B b x) listA
 
+data Color
+  = Green
+  | Blue
+  | Red
 
-{-
+colorToString :: Color -> String
+colorToString col =
+  case col of
+    Green -> "Green"
+    Blue  -> "Blue"
+    Red   -> "Red"
 
-### Data types
-##### Enumerated (enum) type
-Enum is a data type consisting of a set of named values.
-* Create a data that has three different Color constructors
-* Create a function that goes from your Color to a String of your color.
-  * if you give Blue it gives you a Spring that says "Blue"
+data Vegetable
+  = Celery
+  | Carrot Color
 
-##### Basic Algebraic Data Type
-An algebraic data type (ADT) has one or more data constructors,
-and each data constructor can have zero or more arguments.
-* Create data Vegetable = Celery | Carrot Color
-* Create a function that takes a Vegetable and gives a Color
-	* vegetableColor :: Vegetable -> Color
-* Create a function that takes a Vegetable and give a String of the color
-	* vegetableToString :: Vegetable -> String
+vegetableColor :: Vegetable -> Color
+vegetableColor veg =
+  case veg of
+    Celery -> Green
+    Carrot col -> col
 
-##### Polymorphic Algebraic data type
-  * Create a data called Keep that has two constructors =Shoebox a | Safe a
-  * Create function takeOut :: Keep a -> a
-	* Put a Red Carrot into a ShoeBox(Keep) and write out what its type would be
-	* Create a ShoeBox Carrot and write out what its type would be
+vegetableToString :: Vegetable -> String
+vegetableToString veg =
+  colorToString $ vegetableColor veg
 
-##### Create your own function
-* Make Maybe
-	* implement map for your Maybe
-  * create Functor instance for your Maybe
+data Keep a
+  = Shoebox a
+  | Safe a
 
-* Make List
-	* implement map for your List
-  * create Functor instance for your List
--}
+insideKeep :: Keep a -> a
+insideKeep keep =
+  case keep of
+    Shoebox a -> a
+    Safe a -> a
+
+redCarretInShoebox :: Keep Vegetable
+redCarretInShoebox =
+  Shoebox $ Carrot Red
+
+carretInShoebox :: Keep (Color -> Vegetable)
+carretInShoebox =
+  Shoebox Carrot
+
+data MakeMaybe a
+  = NothingMaybe
+  | JustSomething a
+
+mapMakeMaybe :: (a -> b) -> MakeMaybe a -> MakeMaybe b
+mapMakeMaybe functionA2B ma =
+  case ma of
+    NothingMaybe -> NothingMaybe
+    JustSomething a -> JustSomething $ functionA2B a
+
+instance Functor MakeMaybe where
+  fmap = mapMakeMaybe
+
+data MakeList a
+  = NothingList
+  | MakeList a (MakeList a)
+
+mapMakeList :: (a -> b) -> MakeList a -> MakeList b
+mapMakeList functionA2B listA =
+  case listA of
+    NothingList -> NothingList
+    MakeList x xs -> MakeList (functionA2B x) (mapMakeList functionA2B xs)
+
+instance Functor MakeList where
+  fmap = mapMakeList
