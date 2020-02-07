@@ -1,24 +1,25 @@
-module H20200205 (applyList) where
+module H20200206
+  () where
 
 import qualified  Data.Text as T
 
-data Pizza = Pizza
-  { pizzaSize :: PizzaSize
-  , pizzaName :: PizzaName
+data Dog = Dog
+  { dogSize :: DogSize
+  , dogName :: DogName
   }
 
-newtype PizzaName = PizzaName T.Text
-newtype PizzaSize = PizzaSize Int
+newtype DogName = DogName T.Text
+newtype DogSize = DogSize Int
 
-createPizza :: PizzaName -> PizzaSize -> Pizza
-createPizza name size =
-  Pizza { pizzaSize = size
-        , pizzaName = name
-        }
+createDog :: DogName -> DogSize -> Dog
+createDog name size =
+  Dog { dogSize = size
+      , dogName = name
+      }
 
-editPizzaNem :: Pizza -> PizzaName -> Pizza
-editPizzaNem pizza name =
-  pizza { pizzaName = name }
+editDogNem :: Dog -> DogName -> Dog
+editDogNem dog name =
+  dog { dogName = name }
 
 fmapList :: (a -> b) -> [a] -> [b]
 fmapList functionA2B listA =
@@ -100,8 +101,8 @@ mapMakeList functionA2B listA =
 instance Functor MakeList where
   fmap = mapMakeList
 
-applMaybe :: Maybe (a -> b) -> Maybe a -> Maybe b
-applMaybe maybeFunc ma =
+applyMaybe :: Maybe (a -> b) -> Maybe a -> Maybe b
+applyMaybe maybeFunc ma =
   case maybeFunc of
     Nothing -> Nothing
     Just func ->
@@ -111,13 +112,7 @@ applMaybe maybeFunc ma =
           Just $ func a
 
 applyList :: [a -> b] -> [a] -> [b]
-applyList listFunc listA =
-  case listFunc of
-    (func:funcendlist) ->
-      fmap func listA <> applyList funcendlist listA
-
-applyListTwo :: [a -> b] -> [a] -> [b]
-applyListTwo (func:funcendlist) listA =
+applyList (func:funcendlist) listA =
   fmap func listA <> applyList funcendlist listA
 
 pureMaybe :: a -> Maybe a
@@ -146,27 +141,12 @@ createListOfMaybeStr :: [Maybe String]
 createListOfMaybeStr =
   [Just "something", Just "somethingteo"]
 
-listMayStrToInt :: [Maybe String] -> [Maybe Int]
-listMayStrToInt listMayStr =
-  case listMayStr of
-    [] -> []
-    (Nothing : mxs) -> [Nothing] <> listMayStrToInt mxs
-    (Just x  : mxs) -> [Just (length x)] <> listMayStrToInt mxs
-
-listMayStrToIntTwo :: [MakeMaybe String] -> [MakeMaybe Int]
-listMayStrToIntTwo listMayStr =
-  case listMayStr of
-    (NothingMaybe : xms) ->
-      listMayStrToIntTwo xms
-    (JustSomething x : xms) ->
-      [JustSomething (length x)] <> listMayStrToIntTwo xms
-
-listMayStrToIntThree :: MakeList (MakeMaybe String)
+listMayStrToInt :: MakeList (MakeMaybe String)
                      -> MakeList (MakeMaybe Int)
-listMayStrToIntThree listMayStr =
+listMayStrToInt listMayStr =
   mapMakeList (mapMakeMaybe length) listMayStr
 
-listMayStrToIntfour :: MakeList (MakeMaybe String)
+listMayStrToIntTwo :: MakeList (MakeMaybe String)
                     -> MakeList (MakeMaybe Int)
-listMayStrToIntfour listMayStr =
+listMayStrToIntTwo listMayStr =
   fmap (fmap length) listMayStr
