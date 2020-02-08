@@ -108,11 +108,11 @@ applyMaybe mFunctionA2B ma =
 applyMaybeV2 :: Maybe (a -> b) -> Maybe a -> Maybe b
 applyMaybeV2 mFunctionA2B ma =
   case mFunctionA2B of
-    nothing -> Nothing
+    Nothing       -> Nothing
     Just function ->
       case ma of
         Nothing -> Nothing
-        Just a -> Just $ function a
+        Just a  -> Just $ function a
 -- I do not understadn the diff yet but I
 -- know there is, just need to look at it more.
 --

@@ -25,5 +25,5 @@ makeFoldl functionBA2B b listA =
     (x:xs) -> makeFoldl functionBA2B (functionBA2B b x) xs
 
 make2Foldl :: (b -> a -> b) -> b -> [a] -> b
-make2Foldl funcitonBA2B b [] = b
+make2Foldl _ b [] = b
 make2Foldl funcitonBA2B b (x:xs) = make2Foldl funcitonBA2B (funcitonBA2B b x) xs

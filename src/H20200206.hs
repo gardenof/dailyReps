@@ -112,7 +112,15 @@ applyMaybe maybeFunc ma =
           Just $ func a
 
 applyList :: [a -> b] -> [a] -> [b]
-applyList (func:funcendlist) listA =
+applyList listFunc listA =
+  case listFunc of
+    [] -> []
+    (func:funcendlist) ->
+      fmap func listA <> applyList funcendlist listA
+
+applyListTwo :: [a -> b] -> [a] -> [b]
+applyListTwo [] _ = []
+applyListTwo (func:funcendlist) listA =
   fmap func listA <> applyList funcendlist listA
 
 pureMaybe :: a -> Maybe a

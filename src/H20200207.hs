@@ -1,17 +1,53 @@
-## Reps
+module H20200207 where
 
-### Create a ...
-* New file with a date naming convention HYearMonthDay
-    * Ex: For Jan 7th, 2020 it would be H20200107
-* Model
-* data record
-* Two different new type
-* write a function that will create an instance of your record that you just created.
-* write a function that will edit part of your record.
+import qualified  Data.Text as T
 
-### Write the function out
-* function that does what fmap does for a list
-* function that does what fmap does for a Maybe
+data Cat = Cat
+  { catName :: CatName
+  , catAge  :: CatAge
+  }
+
+newtype CatAge = CatAge Int
+newtype CatName = CatName T.Text
+
+creatACat :: CatName -> CatAge -> Cat
+creatACat name age =
+  Cat { catName = name
+      , catAge  = age
+      }
+
+editCatName :: Cat -> CatName -> Cat
+editCatName cat name =
+  cat { catName = name}
+
+fmapList :: (a -> b) -> [a] -> [b]
+fmapList funcationA2B listA =
+  case listA of
+    []     -> []
+    (x:xs) ->
+      funcationA2B x : fmapList funcationA2B xs
+
+fmapMaybe :: (a -> b) -> Maybe a -> Maybe b
+fmapMaybe functionA2B ma =
+  case ma of
+    Nothing -> Nothing
+    Just a  -> Just $ functionA2B a
+
+foldlfoldl :: (b -> a -> b) -> b -> [a] -> b
+foldlfoldl funcitonBA2B b listA =
+  case listA of
+    []     -> b
+    (x:xs) ->
+      foldlfoldl funcitonBA2B (funcitonBA2B b x) xs
+
+foldlfoldlT :: (b -> a -> b) -> b -> [a] -> b
+foldlfoldlT funcitonBA2B b listA =
+  case listA of
+    [] -> b
+    (x:xs) ->
+      foldlfoldlT funcitonBA2B (funcitonBA2B b x) xs
+
+{-
 * function that does what foldl
 
 ### Data types
@@ -63,4 +99,4 @@ and each data constructor can have zero or more arguments.
 * `~~~~` :: [Maybe String]
 
 * `~~~~` :: [Maybe String] -> [Maybe Int]
-
+-}

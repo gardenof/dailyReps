@@ -13,7 +13,7 @@ newtype AdidasName = AdidasName T.Text
 
 createAdidas :: AdidasAge -> AdidasName -> Adidas
 createAdidas age name =
-  Adidas { adidasName = templetAdidasName, adidasAge = templetAdidasAge}
+  Adidas { adidasName = name, adidasAge = age}
 
 templetAdidasAge :: AdidasAge
 templetAdidasAge =
@@ -47,7 +47,7 @@ foldlfoldl :: (b -> a -> b) -> b -> [a] -> b
 foldlfoldl funcitonBA2B b listA =
   case listA of
     [] -> b
-    (x:xs) -> foldlfoldl funcitonBA2B (funcitonBA2B b x) listA
+    (x:xs) -> foldlfoldl funcitonBA2B (funcitonBA2B b x) xs
 
 data Color
   = Green

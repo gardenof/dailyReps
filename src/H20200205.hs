@@ -113,10 +113,12 @@ applMaybe maybeFunc ma =
 applyList :: [a -> b] -> [a] -> [b]
 applyList listFunc listA =
   case listFunc of
+    [] -> []
     (func:funcendlist) ->
       fmap func listA <> applyList funcendlist listA
 
 applyListTwo :: [a -> b] -> [a] -> [b]
+applyListTwo [] _ = []
 applyListTwo (func:funcendlist) listA =
   fmap func listA <> applyList funcendlist listA
 
@@ -156,6 +158,7 @@ listMayStrToInt listMayStr =
 listMayStrToIntTwo :: [MakeMaybe String] -> [MakeMaybe Int]
 listMayStrToIntTwo listMayStr =
   case listMayStr of
+    [] -> []
     (NothingMaybe : xms) ->
       listMayStrToIntTwo xms
     (JustSomething x : xms) ->
