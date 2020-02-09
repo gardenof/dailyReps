@@ -46,15 +46,15 @@ and each data constructor can have zero or more arguments.
   * create Functor instance for your List
 
 ##### Apply / Pure
-* applMaybe :: Maybe (a -> b) -> Maybe a -> Maybe b
-
-* applyList :: [a -> b] -> [a] -> [b]
-
 * pureMaybe :: a -> Maybe a
 
 * pureList :: a -> [a]
 
 * mebers :: Maybe [String]
+
+* applyMaybe :: Maybe (a -> b) -> Maybe a -> Maybe b
+
+* applyList :: [a -> b] -> [a] -> [b]
 
 * lengthOfEachMeber :: Maybe [String] -> Maybe [Int]
   * Should work like

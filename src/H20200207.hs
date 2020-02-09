@@ -40,63 +40,106 @@ foldlfoldl funcitonBA2B b listA =
     (x:xs) ->
       foldlfoldl funcitonBA2B (funcitonBA2B b x) xs
 
-foldlfoldlT :: (b -> a -> b) -> b -> [a] -> b
-foldlfoldlT funcitonBA2B b listA =
+data Color
+  = Green
+  | Blue
+  | Red
+
+colorToString :: Color -> String
+colorToString col =
+  case col of
+    Green -> "Green"
+    Blue  -> "Blue"
+    Red   -> "Red"
+
+data Vegetable
+  = Celery
+  | Carrot Color
+
+vegetableToColor :: Vegetable -> Color
+vegetableToColor veg =
+  case veg of
+    Celery     -> Green
+    Carrot col -> col
+
+vegetableToString :: Vegetable -> String
+vegetableToString veg =
+  colorToString $ vegetableToColor veg
+
+data Keep a
+  = Shoebox a
+  | Safe a
+
+takeout :: Keep a -> a
+takeout keep =
+  case keep of
+    Shoebox a -> a
+    Safe a    -> a
+
+redCarrotInShoebox :: Keep Vegetable
+redCarrotInShoebox =
+  Shoebox $ Carrot Red
+
+carrotInShoebox :: Keep (Color -> Vegetable)
+carrotInShoebox =
+  Shoebox Carrot
+
+data MakeMaybe a
+  = NothingMaybe
+  | JustMaybe a
+
+mapMakeMaybe :: (a -> b) -> MakeMaybe a -> MakeMaybe b
+mapMakeMaybe functionA2B ma =
+  case ma of
+    NothingMaybe -> NothingMaybe
+    JustMaybe a  -> JustMaybe $ functionA2B a
+
+instance Functor MakeMaybe where
+  fmap = mapMakeMaybe
+
+data MakeList a
+  = NothingList
+  | MakeList a (MakeList a)
+
+mapMakeList :: (a -> b) -> MakeList a -> MakeList b
+mapMakeList functionA2B listA =
   case listA of
-    [] -> b
-    (x:xs) ->
-      foldlfoldlT funcitonBA2B (funcitonBA2B b x) xs
+    NothingList   -> NothingList
+    MakeList x xs -> MakeList (functionA2B x) (mapMakeList functionA2B xs)
 
-{-
-* function that does what foldl
+instance Functor MakeList where
+  fmap = mapMakeList
 
-### Data types
-##### Enumerated (enum) type
-Enum is a data type consisting of a set of named values.
-* Create a data that has three different Color constructors
-* Create a function that goes from your Color to a String of your color.
-  * if you give Blue it gives you a Spring that says "Blue"
+applyMaybe :: MakeMaybe (a -> b) -> MakeMaybe a -> MakeMaybe b
+applyMaybe maFunction ma =
+  case maFunction of
+    NothingMaybe   -> NothingMaybe
+    JustMaybe func ->
+      case ma of
+        NothingMaybe -> NothingMaybe
+        JustMaybe a  ->
+          JustMaybe $ func a
 
-##### Basic Algebraic Data Type
-An algebraic data type (ADT) has one or more data constructors,
-and each data constructor can have zero or more arguments.
-* Create data Vegetable = Celery | Carrot Color
-* Create a function that takes a Vegetable and gives a Color
-	* vegetableColor :: Vegetable -> Color
-* Create a function that takes a Vegetable and give a String of the color
-	* vegetableToString :: Vegetable -> String
+pureMaybe :: a -> Maybe a
+pureMaybe a =
+  Just a
 
-##### Polymorphic Algebraic data type
-  * Create a data called Keep that has two constructors =Shoebox a | Safe a
-  * Create function takeOut :: Keep a -> a
-	* Put a Red Carrot into a ShoeBox(Keep) and write out what its type would be
-	* Create a ShoeBox Carrot and write out what its type would be
+pureList :: a -> [a]
+pureList a =
+  [a]
 
-##### Create your own function
-* Make Maybe
-	* implement map for your Maybe
-  * create Functor instance for your Maybe
+member :: Maybe [String]
+member =
+  Just ["someText"]
 
-* Make List
-	* implement map for your List
-  * create Functor instance for your List
+lengthOfEachMeber :: Maybe [String] -> Maybe [Int]
+lengthOfEachMeber mayListString =
+  fmap (fmap length) mayListString
 
-##### Apply / Pure
-* applMaybe :: Maybe (a -> b) -> Maybe a -> Maybe b
+someFunction :: [Maybe String]
+someFunction =
+  [Just "someText"]
 
-* applyList :: [a -> b] -> [a] -> [b]
-
-* pureMaybe :: a -> Maybe a
-
-* pureList :: a -> [a]
-
-* mebers :: Maybe [String]
-
-* lengthOfEachMeber :: Maybe [String] -> Maybe [Int]
-  * Should work like
-  * Just ["Bob", "Carol"] -> Just [3,5]
-
-* `~~~~` :: [Maybe String]
-
-* `~~~~` :: [Maybe String] -> [Maybe Int]
--}
+someFunctionTwo :: [Maybe String] -> [Maybe Int]
+someFunctionTwo listMaString =
+  fmap (fmap length) listMaString
