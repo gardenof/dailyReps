@@ -73,7 +73,6 @@ and each data constructor can have zero or more arguments.
 * Use fmap to create an instance of that data type using the maybe value.
 * Create a data type that needs a String and Int
 * Craete a :: Maybe Int
-* Use fmap to create an instance of that data type
-  * (String Int) using the the two Maybe values
+* Use fmap and apply to create an instance of that data type (String Int) using the the two Maybe values
 
 
