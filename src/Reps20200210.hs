@@ -202,3 +202,10 @@ justInt = Just 34
 fmapCreatCustomSize :: Maybe CustomSize
 fmapCreatCustomSize =
   applyMaybeT (fmap CustomSize justString) justInt
+
+data Dean = Dean Int String Int
+
+maybeDean :: Maybe Dean
+maybeDean =
+  -- fmap and applemaybeT
+  applyMaybeT (applyMaybeT (fmap Dean justInt) justString) justInt
