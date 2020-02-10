@@ -1,13 +1,11 @@
 ## Reps
 
 ### Create a ...
-* New file with a date naming convention HYearMonthDay
-    * Ex: For Jan 7th, 2020 it would be H20200107
-* Model
-* data record
-* Two different new type
-* write a function that will create an instance of your record that you just created.
-* write a function that will edit part of your record.
+* Model in a new file
+* -data record-
+* -Two different new type-
+* -write a function that will create an instance of your record that you just created.-
+* -write a function that will edit part of your record.-
 
 ### Write the function out
 * function that does what fmap does for a list
@@ -50,17 +48,32 @@ and each data constructor can have zero or more arguments.
 
 * pureList :: a -> [a]
 
-* mebers :: Maybe [String]
+* members :: Maybe [String]
 
-* applyMaybe :: Maybe (a -> b) -> Maybe a -> Maybe b
+* applyMaybe ::
 
-* applyList :: [a -> b] -> [a] -> [b]
+* applyList ::
+
+* applyZipList ::
 
 * lengthOfEachMeber :: Maybe [String] -> Maybe [Int]
   * Should work like
   * Just ["Bob", "Carol"] -> Just [3,5]
+* write with your functions and then fmap BOTH
 
 * `~~~~` :: [Maybe String]
 
 * `~~~~` :: [Maybe String] -> [Maybe Int]
+* write with your functions and then fmap BOTH
+
+##### Pre applicative
+
+* Create a data that is a String
+* Create a :: Maybe String
+* Use fmap to create an instance of that data type using the maybe value.
+* Create a data type that needs a String and Int
+* Craete a :: Maybe Int
+* Use fmap to create an instance of that data type
+  * (String Int) using the the two Maybe values
+
 
