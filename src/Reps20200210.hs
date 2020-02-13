@@ -172,8 +172,8 @@ lengthOfEachMeberTwo :: MakeMaybe (MakeList String) -> MakeMaybe (MakeList Int)
 lengthOfEachMeberTwo maybeListString =
   fmap (fmap length) maybeListString
 
-listOfMaybeStrings :: [Maybe String]
-listOfMaybeStrings = [Just"sdf",Just"dfw",Just"ee"]
+createlistOfMaybeStrings :: [Maybe String]
+createlistOfMaybeStrings = [Just"sdf",Just"dfw",Just"ee"]
 
 lengthOfEachMeberThree :: MakeList (MakeMaybe String)
                        -> MakeList (MakeMaybe Int)
@@ -182,8 +182,8 @@ lengthOfEachMeberThree listOfMaybeStrings =
 
 lengthOfEachMeberFour :: MakeList (MakeMaybe String)
                        -> MakeList (MakeMaybe Int)
-lengthOfEachMeberFour listOfMaybeStrings =
-  fmap (fmap length) listOfMaybeStrings
+lengthOfEachMeberFour listOfMaybeStringsTwo =
+  fmap (fmap length) listOfMaybeStringsTwo
 
 data Name = Name String
 
