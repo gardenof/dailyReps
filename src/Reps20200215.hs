@@ -104,28 +104,49 @@ applyMaybe maFunc ma =
         Nothing -> Nothing
         Just a -> Just $ func a
 
-{- ## Reps
-* applyList ::
+applyList :: [a -> b] -> [a] -> [b]
+applyList listOfFuncs listA =
+  case listOfFuncs of
+    [] -> []
+    (func:restOfFuncs) ->
+      fmap func listA <> applyList restOfFuncs listA
 
-* applyZipList ::
+applyZipList :: [a -> b] -> [a] -> [b]
+applyZipList listOfFuncs listA =
+  case listOfFuncs of
+    [] -> []
+    (func:restOfFuncs) ->
+      case listA of
+        [] -> []
+        (x:xs) ->
+          func x : applyZipList restOfFuncs xs
 
-* lengthOfEachMeber :: Maybe [String] -> Maybe [Int]
-  * Should work like
-  * Just ["Bob", "Carol"] -> Just [3,5]
-* write with your functions and then fmap BOTH
+--lengthOfEachMeber :: Maybe [String] -> Maybe [Int]
+lengthOfEachMeber :: MakeMaybe (MakeList String)
+                  -> MakeMaybe (MakeList Int)
+lengthOfEachMeber maybeListString =
+  mapMakeMaybe (mapMakeList length) maybeListString
 
-* `~~~~` :: [Maybe String]
+listJustString :: [Maybe String]
+listJustString = [Just"asd",Just"asd",Just"asd"]
 
-* `~~~~` :: [Maybe String] -> [Maybe Int]
-* write with your functions and then fmap BOTH
+--`~~~~` :: [Maybe String] -> [Maybe Int]
+lengthOfEachMeberTwo :: MakeList (MakeMaybe String)
+                     -> MakeList (MakeMaybe Int)
+lengthOfEachMeberTwo listOfMaybeString =
+  mapMakeList (mapMakeMaybe length) listOfMaybeString
 
-##### Pre applicative
+data EdenString = EdenString String
 
-* Create a data that is a String
-* Create a :: Maybe String
-* Use fmap to create an instance of that data type using the maybe value.
-* Create a data type that needs a String and Int
-* Craete a :: Maybe Int
-* Use fmap and apply to create an instance of that data type (String Int) using the the two Maybe values
+justString = Just "asd"
 
--}
+createInstance :: Maybe EdenString
+createInstance = fmap EdenString justString
+
+data EdenStrInt = EdenStrInt String Int
+
+justInt = Just 5
+
+createInstanceTwo :: Maybe EdenStrInt
+createInstanceTwo =
+  applyMaybe (fmap EdenStrInt justString) justInt
