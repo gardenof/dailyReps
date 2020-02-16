@@ -150,3 +150,23 @@ justInt = Just 5
 createInstanceTwo :: Maybe EdenStrInt
 createInstanceTwo =
   applyMaybe (fmap EdenStrInt justString) justInt
+
+
+{-
+Functor Laws
+Functors must preserve identity morphisms
+fmap id = id
+
+Functors preserve composition of morphisms
+fmap (f . g)  ==  fmap f . fmap g
+
+
+Methods
+pure :: a -> f a
+  Lift a value.
+
+(<*>) :: f (a -> b) -> f a -> f b
+  Sequential application.
+  A few functors support an implementation of <*>
+  that is more efficient than the default one.
+-}
