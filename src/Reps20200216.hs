@@ -151,3 +151,12 @@ justInt = Just 5
 createInstanceTwo :: Maybe EdenStrInt
 createInstanceTwo =
   applyMaybe(fmap EdenStrInt justString) justInt
+
+{-
+fmap id = id
+
+fmap (f . g) == fmap f . fmap g
+
+
+
+-}
