@@ -1,28 +1,16 @@
-# dailyReps
+# daily-reps
 
-2020-02-16 = new reps
-  Functor Laws
-  Functors must preserve identity morphisms
-  fmap id = id
-
-  Functors preserve composition of morphisms
-  fmap (f . g)  ==  fmap f . fmap g
-
-
-  Methods
-  pure :: a -> f a
-    Lift a value.
-
-  (<*>) :: f (a -> b) -> f a -> f b
-    Sequential application.
-    A few functors support an implementation of <*>
-    that is more efficient than the default one.
-
-Resp20200210 = Talked with David about Pre applicatives and new reps.
-  35 reps took an hours and 15 mins
-
-H20200209 = 27 reps
-
-H20200208 = need a way to test everthing that is writen
-
-H20200206 = did reps
+| Day | Reps | Time |
+|-|-|-|
+| 2020-02-17 (Mon) | 36 | ~60mins |
+| 2020-02-16 (Sun) | 35 | ~70mins |
+| 2020-02-15 (Sat) | 34 | ~120mins |
+| 2020-02-14 (Fri) | None | |
+| 2020-02-13 (Thur) | 11 | ~20 mins |
+| 2020-02-12 (Wed) | 11 | ~15 mins |
+| 2020-02-11 (Tue) | 11 | ~15 mins |
+| 2020-02-10 (Mon) | 35 | ~75 mins |
+| 2020-02-09 (Sun) | 27 | |
+| 2020-02-08 (Sat) | 31 | |
+| 2020-02-07 (Fri) | 31 | |
+| 2020-02-06 (Fri) | 35 | |
