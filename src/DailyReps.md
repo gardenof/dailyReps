@@ -8,31 +8,31 @@
 * -write a function that will edit part of your record.-
 
 ### Write the function out
-* function that does what fmap does for a list
-* function that does what fmap does for a Maybe
-* function that does what foldl
+* -function that does what fmap does for a list-
+* -function that does what fmap does for a Maybe-
+* -function that does what foldl-
 
 ### Data types
 ##### Enumerated (enum) type
-Enum is a data type consisting of a set of named values.
-* Create a data that has three different Color constructors
-* Create a function that goes from your Color to a String of your color.
-  * if you give Blue it gives you a Spring that says "Blue"
+-Enum is a data type consisting of a set of named values.-
+* -Create a data that has three different Color constructors-
+* -Create a function that goes from your Color to a String of- your color.
+  * -if you give Blue it gives you a Spring that says "Blue"-
 
 ##### Basic Algebraic Data Type
-An algebraic data type (ADT) has one or more data constructors,
-and each data constructor can have zero or more arguments.
-* Create data Vegetable = Celery | Carrot Color
-* Create a function that takes a Vegetable and gives a Color
-	* vegetableColor :: Vegetable -> Color
-* Create a function that takes a Vegetable and give a String of the color
-	* vegetableToString :: Vegetable -> String
+-An algebraic data type (ADT) has one or more data constructors,-
+-and each data constructor can have zero or more arguments.-
+* -Create data Vegetable = Celery | Carrot Color-
+* -Create a function that takes a Vegetable and gives a Color-
+	* -vegetableColor :: Vegetable -> Color-
+* -Create a function that takes a Vegetable and give a String of the color-
+	* -vegetableToString :: Vegetable -> String-
 
 ##### Polymorphic Algebraic data type
-  * Create a data called Keep that has two constructors =Shoebox a | Safe a
-  * Create function takeOut :: Keep a -> a
-	* Put a Red Carrot into a ShoeBox(Keep) and write out what its type would be
-	* Create a ShoeBox Carrot and write out what its type would be
+  * -Create a data called Keep that has two constructors =Shoebox a | Safe a-
+  * -Create function takeOut :: Keep a -> a-
+	* -Put a Red Carrot into a ShoeBox(Keep) and write out what its type would be-
+	* -Create a ShoeBox Carrot and write out what its type would be-
 
 ##### Create your own function
 * Make Maybe
@@ -75,4 +75,20 @@ and each data constructor can have zero or more arguments.
 * Craete a :: Maybe Int
 * Use fmap and apply to create an instance of that data type (String Int) using the the two Maybe values
 
+use ApplyList
+ newRepFunction :: List EdenStringIntInt
+ newRepFunction =
 
+Once you better understand using applyList
+start using infix notation for AppleList and applyMaybe ex= `functionName`
+
+createInstance :: Maybe EdenString
+Write something with fmap "create insatnce" that on;y useing fmap.
+-- Now right that with out fmap. Use PureMaybe and applyMaybe maybe.
+-- Now that you wrote one for Myabe write one for List
+
+Create applicative instance for MakeMaybe and MakeList FOR pure and (<*>)
+
+instance Applicative MakeList where
+  pure = 
+  (<*>) =
