@@ -63,7 +63,7 @@
 
 * `~~~~` :: [Maybe String]
 
-* `~~~~` :: [Maybe String] -> [Maybe Int]
+* lengthOfEachMeberTwo :: [Maybe String] -> [Maybe Int]
 * write with your functions and then fmap BOTH
 
 ##### Pre applicative
@@ -83,12 +83,16 @@ Once you better understand using applyList
 start using infix notation for AppleList and applyMaybe ex= `functionName`
 
 createInstance :: Maybe EdenString
-Write something with fmap "create insatnce" that on;y useing fmap.
+Write something with fmap "create insatnce" that only useing fmap.
 -- Now right that with out fmap. Use PureMaybe and applyMaybe maybe.
 -- Now that you wrote one for Myabe write one for List
 
 Create applicative instance for MakeMaybe and MakeList FOR pure and (<*>)
 
 instance Applicative MakeList where
-  pure = 
+  pure =
   (<*>) =
+
+* Create code behind the operator (.) Function composition.
+* Rewrite the fucntions you wrote with infix notation to use operators
+
