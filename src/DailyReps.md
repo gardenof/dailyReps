@@ -93,16 +93,14 @@ instance Applicative MakeList where
   pure =
   (<*>) =
 
-* Rewrite the fucntions you wrote with infix notation to use operators
+* Rewrite the functions you wrote with infix notation to use operators
 * Create code behind the operator (.) Function composition.
   * Create code behind the operator (.) Function composition.
-  * write (.) four diffrent time, with 0,1,2,3 lamds and put "("
-    in the types sig to express what you wrote
+  * write (.) four different times, with 0,1,2,3 Lambdas
+  and change "(" in the type to respent the changes
 
-* Rep that build IO Int that give the length of a string that
-  is typed into getLine. Use the functor instance of IO
+* Build IO Int that gives the length of a string that is typed into getLine. Use the functor instance of IO
 
-* build a data type Record with two string filds . use applicative sintake
-  that will buld an IO REcord^ by asking for each fild to be entered as a line.
+* build a data Record with two string fields. Use applicative syntax that will build an IO Record^ by asking for each field to be entered as a line.
 
-* ^^ do both in the repl.
+* ^^ do both in the REPL.
