@@ -93,6 +93,16 @@ instance Applicative MakeList where
   pure =
   (<*>) =
 
-* Create code behind the operator (.) Function composition.
 * Rewrite the fucntions you wrote with infix notation to use operators
+* Create code behind the operator (.) Function composition.
+  * Create code behind the operator (.) Function composition.
+  * write (.) four diffrent time, with 0,1,2,3 lamds and put "("
+    in the types sig to express what you wrote
 
+* Rep that build IO Int that give the length of a string that
+  is typed into getLine. Use the functor instance of IO
+
+* build a data type Record with two string filds . use applicative sintake
+  that will buld an IO REcord^ by asking for each fild to be entered as a line.
+
+* ^^ do both in the repl.

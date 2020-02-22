@@ -1,4 +1,5 @@
-module Reps20200220 () where
+module Reps20200221
+  () where
 
 data MakeMaybe a
   = NothingMaybe
@@ -28,10 +29,10 @@ instance Functor MakeList where
   fmap = mapMakeList
 
 pureMaybe :: a -> Maybe a
-pureMaybe a = Just a
+pureMaybe aa = Just aa
 
 pureList :: a -> [a]
-pureList a = [a]
+pureList aa = [aa]
 
 members :: Maybe [String]
 members = Just ["asdf","asdf","asdf"]
@@ -40,8 +41,7 @@ applyMaybe :: Maybe (a -> b) -> Maybe a -> Maybe b
 applyMaybe maybeFunc ma =
   case maybeFunc of
     Nothing -> Nothing
-    Just func ->
-      fmap func ma
+    Just func -> fmap func ma
 
 applyList :: [a -> b] -> [a] -> [b]
 applyList listOfFuncs listA =
@@ -96,10 +96,10 @@ createInstanceTwoB =
   ((fmap EdenStringIntInt justString) `applyMaybe` justInt) `applyMaybe` justInt
 
 listofString :: [String]
-listofString = ["asdf","adsf","adsf"]
+listofString = ["fgdf","wersf","wer","asfd"]
 
 listOfInt :: [Int]
-listOfInt = [1,2,3,4]
+listOfInt = [1,2,3,4,5]
 
 createInstanceThree :: [EdenStringIntInt]
 createInstanceThree =
@@ -109,16 +109,15 @@ createInstanceThreeB :: [EdenStringIntInt]
 createInstanceThreeB =
   ((fmap EdenStringIntInt listofString) `applyList` listOfInt) `applyList` listOfInt
 
-
 -- Now right that with out fmap. Use PureMaybe and applyMaybe maybe.
 createInstancefour :: Maybe EdenString
 createInstancefour =
-  applyMaybe (Just EdenString) (pureMaybe "sdf")
+  applyMaybe (Just EdenString) (pureMaybe "lkjl")
 
 -- Now that you wrote one for Myabe write one for List
 createInstancefive :: [EdenString]
 createInstancefive =
-  applyList [EdenString] (pureList "asd")
+  applyList [EdenString] (pureList "werc")
 
 pureMakeMaybe :: a -> MakeMaybe a
 pureMakeMaybe a = JustMaybe a
@@ -159,11 +158,9 @@ instance Applicative MakeList where
   pure = pureMakeList
   (<*>) = applyMakeList
 
---Create code behind the operator (.) Function composition.
---(.) :: (b -> c) -> (a -> b) -> a -> c
-functionComposition :: (b -> c) -> ((a -> b) -> (a -> c))
-functionComposition funcB2C  =
-  \funcA2B -> \x -> funcB2C (funcA2B x)
+functionComposition :: (b -> c) -> (a -> b) -> a -> c
+functionComposition funcB2C funcA2B a=
+  funcB2C (funcA2B a)
 
 --Rewrite the fucntions you wrote with infix notation to use operators
 createInstanceTwoC :: Maybe EdenStringIntInt
@@ -173,4 +170,3 @@ createInstanceTwoC =
 createInstanceThreeC :: [EdenStringIntInt]
 createInstanceThreeC =
   EdenStringIntInt <$> listofString <*> listOfInt <*> listOfInt
-
