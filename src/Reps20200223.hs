@@ -128,7 +128,7 @@ functionComposition :: (b -> c) -> (a -> b) -> a -> c
 functionComposition funcB2C funcA2B a=
   funcB2C (funcA2B a)
 
-functionComposition1 :: (b -> c) -> (a -> b) -> a -> c
+functionComposition1 :: (b -> c) -> (a -> b) -> (a -> c)
 functionComposition1 funcB2C funcA2B =
   \a -> funcB2C (funcA2B a)
 

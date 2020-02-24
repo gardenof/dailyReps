@@ -98,8 +98,10 @@ instance Applicative MakeList where
   * Create code behind the operator (.) Function composition.
   * write (.) four different times, with 0,1,2,3 Lambdas
   and change "(" in the type to respent the changes
+  * write wiht \a b c ->
 
-* Build IO Int that gives the length of a string that is typed into getLine. Use the functor instance of IO
+* Build IO Int that gives the length of a string that is typed into getLine.
+* Use the functor instance of IO
 
 * build a data Record with two string fields. Use applicative syntax that will build an IO Record^ by asking for each field to be entered as a line.
 
