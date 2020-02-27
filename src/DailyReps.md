@@ -106,3 +106,14 @@ instance Applicative MakeList where
 * build a data Record with two string fields. Use applicative syntax that will build an IO Record^ by asking for each field to be entered as a line.
 
 * ^^ do both in the REPL.
+
+
+Create a new type around List
+Implement Applicative for it
+Provide a pure and apply instance
+Make pure be correct for applyZip
+
+Understand "->" in types
+figure out the Type for Fmap, Pure, (<*>)
+figure out the method for Fmap, Pure, (<*>)
+
