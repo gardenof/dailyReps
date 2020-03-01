@@ -1,4 +1,4 @@
-module Reps20200227 () where
+module Reps20200227 where
 
 lengthOfEachMeber :: Maybe [String] -> Maybe [Int]
 lengthOfEachMeber maybeListOfString =
@@ -78,20 +78,19 @@ applyListZip listOfFuncs listA =
       case listA of
         [] -> []
         (x:xs) ->
-          func x : applyListZip restOfFuncs
+          func x : applyListZip restOfFuncs xs
+{-
+newtype EdenList = EdenList []
 
+pureList :: a -> EdenList a
+pureList a = EdenList a
 
-newtype EdenList = EdenList [String] deriving (Applicative)
-
-pureList :: a -> [a]
-pureList a = [a]
 
 instance Applicative EdenList where
-  pure = pureList
-  (<*>) = applyListZip
+  -- pure = pureLit
+  -- (<*>) = applyListZip
 
 
-{-
 Create applicative instance for MakeMaybe
 and MakeList FOR pure and (<*>)
 
@@ -108,3 +107,7 @@ Understand "->" in types
 figure out the Type for Fmap, Pure, (<*>)
 figure out the method for Fmap, Pure, (<*>)
 -}
+
+-- Figure out what this means 
+--λ> type AA = []
+--type AA = [] :: * -> *
