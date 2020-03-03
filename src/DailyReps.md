@@ -117,3 +117,18 @@ Understand "->" in types
 figure out the Type for Fmap, Pure, (<*>)
 figure out the method for Fmap, Pure, (<*>)
 
+Monad
+join       :: Monad m => m (m a) -> m a
+Bind (>>=) :: m a -> (a -> m b) -> m b
+"I'd specifically like you to write bind with the arguments flipped,
+  so that it mirrors Functor and Applicative"
+
+Write join for List
+Write join for Maybe
+Write Bind for List
+Write Bind for Maybe
+
+Write join for list useing Bind
+Write join for Maybe useing Bind
+Write Bind for list useing join
+Write Bind for Maybe useing join
