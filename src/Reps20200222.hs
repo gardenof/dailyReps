@@ -62,15 +62,17 @@ applyZipList listOfFuncs listA =
 --lengthOfEachMeber :: Maybe [String] -> Maybe [Int]
 lengthOfEachMeber :: MakeMaybe (MakeList String)
                   -> MakeMaybe (MakeList Int)
-lengthOfEachMeber maybeListOFString =
-  mapMakeMaybe (mapMakeList length) maybeListOFString
+lengthOfEachMeber maybeListOFStringOne =
+  mapMakeMaybe (mapMakeList length) maybeListOFStringOne
 
 listOfMaybeString :: [Maybe String]
 listOfMaybeString = [Just"asd",Just"asd",Just"qer"]
 
 --lengthOfEachMeberTwo :: [Maybe String] -> [Maybe Int]
-lengthOfEachMeberTwo maybeListOFString =
-  mapMakeList (mapMakeMaybe length) maybeListOFString
+lengthOfEachMeberTwo :: MakeList (MakeMaybe String)
+                     -> MakeList (MakeMaybe Int)
+lengthOfEachMeberTwo maybeListOFStringTwo =
+  mapMakeList (mapMakeMaybe length) maybeListOFStringTwo
 
 data EdenString = EdenString String
 

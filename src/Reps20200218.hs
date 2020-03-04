@@ -123,8 +123,8 @@ listOfMaybeString = [Just"sdf",Just"sf",Just"sf"]
 
 lengthOfEachMeberTwo :: Makelist (MakeMaybe String)
                      -> Makelist (MakeMaybe Int)
-lengthOfEachMeberTwo listOfMaybeString =
-  mapMakeList (mapMakeMaybe length) listOfMaybeString
+lengthOfEachMeberTwo listOfMaybeStringTwo =
+  mapMakeList (mapMakeMaybe length) listOfMaybeStringTwo
 
 data EdenString = EdenString String
 

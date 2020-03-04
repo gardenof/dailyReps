@@ -2,6 +2,7 @@ module Reps20200302 () where
 
 
 joinList :: [[a]] -> [a]
+joinList [] = []
 joinList  (list:restOfList) =
       list <> joinList restOfList
 

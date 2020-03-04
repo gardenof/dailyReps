@@ -138,6 +138,7 @@ lengthOfEachMeberTwo listOfMaybeString =
 
 data EdenString = EdenString String
 
+justString :: Maybe String
 justString = Just "asd"
 
 createInstance :: Maybe EdenString
@@ -145,6 +146,7 @@ createInstance = fmap EdenString justString
 
 data EdenStrInt = EdenStrInt String Int
 
+justInt :: Maybe Int
 justInt = Just 5
 
 createInstanceTwo :: Maybe EdenStrInt

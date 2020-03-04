@@ -95,6 +95,7 @@ members = Just ["sdf","sdf","sdf"]
 applyMaybe :: Maybe (a -> b) -> Maybe a -> Maybe b
 applyMaybe maybeFunctionA2B ma =
   case maybeFunctionA2B of
+    Nothing -> Nothing
     Just func ->
       fmap func ma
 
