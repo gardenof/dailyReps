@@ -117,7 +117,8 @@ Understand "->" in types
 figure out the Type for Fmap, Pure, (<*>)
 figure out the method for Fmap, Pure, (<*>)
 
-Monad
+##### Monad
+##### Part A
 join       :: Monad m => m (m a) -> m a
 Bind (>>=) :: m a -> (a -> m b) -> m b
 "I'd specifically like you to write bind with the arguments flipped,
@@ -132,3 +133,14 @@ Write join for list useing Bind
 Write join for Maybe useing Bind
 Write Bind for list useing join
 Write Bind for Maybe useing join
+
+##### Part B
+(=<<) :: (a -> mb) -> ma -> mb "fliped bind"
+(>>=) :: ma -> (a -> mb) -> mb
+
+1. validate Name     :: String -> Maybe Name {Can't be blank "" }
+2. validate Number   :: String -> Maybe Int {use read Maybe}
+3. validate Positive :: Int -> Maybe Int
+4. validate Age      :: String -> Maybe Age {useing 2 & 3}
+5. validate Person   :: String -> String -> Maybe Person {do useing 1 & 4}
+
