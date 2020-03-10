@@ -144,3 +144,11 @@ Write Bind for Maybe useing join
 4. validate Age      :: String -> Maybe Age {useing 2 & 3}
 5. validate Person   :: String -> String -> Maybe Person {do useing 1 & 4}
 
+##### part C
+validate BirthMonth :: String -> Maybe BirthMonth {non-empty}
+
+validate Name :: BirthMonth -> Age -> String -> Maybe Name
+
+Name Validators
+Must start with same letter as BirthMonth
+Must be 2 words if age is over 18
