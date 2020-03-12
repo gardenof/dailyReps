@@ -151,4 +151,4 @@ validate Name :: BirthMonth -> Age -> String -> Maybe Name
 
 Name Validators
 Must start with same letter as BirthMonth
-Must be 2 words if age is over 18
+Name Must be 2 words if age is over 18
