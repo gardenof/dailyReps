@@ -154,3 +154,6 @@ validate PersonVtwo   :: String -> String -> Maybe Person {do useing 1 & 4}
 Name Validators
 Must start with same letter as BirthMonth
 Name Must be 2 words if age is over 18
+
+Do them all with in both bind and join versions?
+New person validation
