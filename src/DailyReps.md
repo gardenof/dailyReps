@@ -157,3 +157,6 @@ Name Must be 2 words if age is over 18
 
 Do them all with in both bind and join versions?
 New person validation
+create PersonTwo with Name Age BirthMonth
+validate PersonTwo :: String -> String -> String -> Maybe PersonTwo
+  Creat one with bind and but don't use <$> or <*>
