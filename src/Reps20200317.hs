@@ -104,10 +104,55 @@ validateAgeLength (Age ageInt) string =
      else Nothing
 
 validateNameTwo :: BirthMonth -> Age -> String -> Maybe Name
-validateNameTwo birthMonth age string =
-  Name <$> (joinMaybe (validateAgeLength age <$> validateBmAndNameLetter birthMonth string))
+validateNameTwo birthMonth age rawNameString =
+  validateBmAndNameLetter birthMonth rawNameString `bindMaybe` \matchedLetterString ->
+  validateAgeLength age matchedLetterString `bindMaybe` \goodNameString ->
+  pure (Name goodNameString)
 
 validatePersonTwo :: String -> String -> String -> Maybe Person
 validatePersonTwo sName sAge sBirthMonth =
   Person <$> joinMaybe (validateNameTwo <$> (validateBirthMonth sBirthMonth) <*> (validateAge sAge) <*> (Just sName))
          <*> validateAge sAge
+
+data PersonTwo = PersonTwo
+  { perTName :: Name
+  , perTAge :: Age
+  , perTBm :: BirthMonth
+  }
+
+validatePersonSix :: String -> String -> String -> Maybe PersonTwo
+validatePersonSix sName sAge sBirthMonth =
+  PersonTwo <$> joinMaybe (validateNameTwo <$> (validateBirthMonth sBirthMonth) <*> (validateAge sAge) <*> (Just sName))
+            <*> validateAge sAge
+            <*> validateBirthMonth sBirthMonth
+
+validatePersonSeven :: String -> String -> String -> Maybe PersonTwo
+validatePersonSeven sName sAge sBirthMonth =
+  let maybeBirthMonth = validateBirthMonth sBirthMonth
+      maybeAge = validateAge sAge
+  in
+  PersonTwo <$> bindMaybe
+                  ( validateNameTwo <$>
+                    maybeBirthMonth <*>
+                    maybeAge <*> Just sName
+                  )
+                  id
+            <*> maybeAge
+            <*> maybeBirthMonth
+
+validatePersonNine :: String -> String -> String -> Maybe PersonTwo
+validatePersonNine sName sAge sBirthMonth =
+  let
+    maybeBirthMonth = validateBirthMonth sBirthMonth
+    maybeAge = validateAge sAge
+  in
+    PersonTwo <$> bindMaybe
+                    ( validateNameTwo <$>
+                      maybeBirthMonth <*>
+                      maybeAge <*> Just sName
+                    )
+                    id
+              <*> maybeAge
+              <*> maybeBirthMonth
+
+
