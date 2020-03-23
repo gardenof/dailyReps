@@ -160,3 +160,32 @@ New person validation
 create PersonTwo with Name Age BirthMonth
 validate PersonTwo :: String -> String -> String -> Maybe PersonTwo
   Creat one with bind and but don't use <$> or <*>
+
+##### part D
+Create newtyoe for Name, Age, and BirthMonth.
+Create Person record with Name Age BirthMonth
+
+1. validate BirthMonth
+  :: String -> Maybe BirthMonth {non-empty}
+2. validate Number
+  :: String -> Maybe Int {use readMaybe}
+3. validate Positive
+  :: Int -> Maybe Int
+4. validate Age
+  :: String -> Maybe Age {useing 2 & 3}
+
+validate Length
+  :: Age -> String -> Maybe String
+    if age over 18 then Val else Nothing
+
+validate Letter
+  :: BirthMonth -> String -> Maybe String
+    BirthMonth and NameString first letter match
+
+validate Name
+  :: BirthMonth -> Age -> String -> Maybe Name
+    user valLength and valLetter
+
+validate Person
+  :: String -> String -> String -> Maybe Person
+    {do useing valBirthMonth valAge valName}
