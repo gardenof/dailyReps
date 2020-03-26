@@ -91,8 +91,10 @@ valLength (Age ageInt) stringName =
 valLetter :: BirthMonth -> String -> Maybe String
 valLetter (BirthMonth bmString) nameString =
   case bmString of
+    [] -> Nothing
     (bx:_) ->
       case nameString of
+        [] -> Nothing
         (x:_) ->
           if (bx==x)
              then Just nameString

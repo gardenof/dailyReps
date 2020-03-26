@@ -189,3 +189,5 @@ validate Name
 validate Person
   :: String -> String -> String -> Maybe Person
     {do useing valBirthMonth valAge valName}
+
+RUN BUILD FOR ERRORS

@@ -79,6 +79,7 @@ validatePerson nameS ageS =
 
 newtype BirthMonth = BirthMonth String
 
+validateBirthMonth :: String -> Maybe BirthMonth
 validateBirthMonth string =
   case string of
     "" -> Nothing

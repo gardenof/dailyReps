@@ -89,10 +89,10 @@ validateBmAndNameLetter :: BirthMonth -> String -> Maybe String
 validateBmAndNameLetter ( BirthMonth bmStrgin) string =
   case bmStrgin of
     [] -> Nothing
-    (bx:bxs) ->
+    (bx:_) ->
       case string of
         [] -> Nothing
-        (x:xs) ->
+        (x:_) ->
           if (bx==x)
              then Just string
              else Nothing

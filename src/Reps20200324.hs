@@ -6,6 +6,8 @@ joinList :: [[a]] -> [a]
 joinList listOfLists =
   case listOfLists of
     [] -> []
+    (x:xs) ->
+      x <> joinList xs 
 
 joinMaybe :: Maybe (Maybe a) -> Maybe a
 joinMaybe mMa =
@@ -82,8 +84,10 @@ valLength (Age ageInt) stringName =
 valLetter :: BirthMonth -> String -> Maybe String
 valLetter (BirthMonth bmString) nameString =
   case bmString of
+    [] -> Nothing
     (bx:_) ->
       case nameString of
+        [] -> Nothing
         (x:_) ->
           if (bx==x)
              then Just nameString

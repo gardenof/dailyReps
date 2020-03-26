@@ -51,7 +51,7 @@ validateName :: String -> Maybe Name
 validateName string =
   case string of
     "" -> Nothing
-    any -> Just $ Name any
+    anyName -> Just $ Name anyName
 
 validateNumber :: String -> Maybe Int
 validateNumber string =
@@ -93,22 +93,22 @@ validateAgeLength (Age int) string =
     else
       Nothing -- NEEDS MORE
 
-
+{- commted out to stop error
 validateBirthMonthLetter :: BirthMonth -> String -> Maybe String
 validateBirthMonthLetter bm string =
-  case string of
+  case bm of
     [] -> Nothing
-    (bx:bxs) ->
+    (bx:_) ->
       case string of
         [] -> Nothing
-        (x:xs) ->
+        (x:_) ->
           if (bx == x)
              then Just string
              else Nothing
+-}
 
 --validateNameTwo :: BirthMonth -> Age -> String -> Maybe Name
 --validateNameTwo birth age string =
-  
 
 {-
 ##### Monad

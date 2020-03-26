@@ -45,10 +45,10 @@ valLetter :: BirthMonth -> String -> Maybe String
 valLetter (BirthMonth bmStrgin) nameString =
   case bmStrgin of
     [] -> Nothing
-    (bx:bxs) ->
+    (bx:_) ->
       case nameString of
         [] -> Nothing
-        (x:xs) ->
+        (x:_) ->
           if (bx==x)
              then Just nameString
              else Nothing

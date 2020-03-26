@@ -20,14 +20,14 @@ bindListflip func listA =
   case listA of
     [] -> []
     (x:xs) ->
-      func x <> bindListflip func listA
+      func x <> bindListflip func xs
 
 bindList :: [a] -> (a -> [b]) -> [b]
 bindList listA func =
   case listA of
     [] -> []
     (x:xs) ->
-      func x <> bindList listA func
+      func x <> bindList xs func
 
 bindMaybe :: Maybe a -> (a -> Maybe b) -> Maybe b
 bindMaybe ma func =
@@ -91,8 +91,10 @@ valLength (Age ageInt) string =
 valLetter :: BirthMonth -> String -> Maybe String
 valLetter (BirthMonth bmString) nameString =
   case bmString of
+    [] -> Nothing
     (bx:_) ->
       case nameString of
+        [] -> Nothing
         (x:_) ->
           if (bx==x)
              then Just nameString
