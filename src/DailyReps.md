@@ -162,7 +162,7 @@ validate PersonTwo :: String -> String -> String -> Maybe PersonTwo
   Creat one with bind and but don't use <$> or <*>
 
 ##### part D
-Create newtyoe for Name, Age, and BirthMonth.
+Create newtype for Name, Age, and BirthMonth.
 Create Person record with Name Age BirthMonth
 
 1. validate BirthMonth
