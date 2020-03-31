@@ -1,57 +1,125 @@
-## Reps
+module Reps20200327 () where
 
-### Create a ...
-* Model in a new file
-* -data record-
-* -Two different new type-
-* -write a function that will create an instance of your record that you just created.-
-* -write a function that will edit part of your record.-
+fmapList :: (a -> b) -> [a] -> [b]
+fmapList func listA =
+  case listA of
+    [] -> []
+    (x:xs) ->
+      func x : fmapList func xs
 
-### Write the function out
-* -function that does what fmap does for a list-
-* -function that does what fmap does for a Maybe-
-* -function that does what foldl-
+fmapMaybe :: (a -> b) -> Maybe a -> Maybe b
+fmapMaybe func ma =
+  case ma of
+    Nothing -> Nothing
+    Just a -> Just $ func a
 
-### Data types
-##### Enumerated (enum) type
--Enum is a data type consisting of a set of named values.-
-* -Create a data that has three different Color constructors-
-* -Create a function that goes from your Color to a String of- your color.
-  * -if you give Blue it gives you a Spring that says "Blue"-
+createfoldl :: (b -> a -> b) -> b -> [a] -> b
+createfoldl func b listA =
+  case listA of
+    [] -> b
+    (x:xs) ->
+      createfoldl func (func b x) xs
 
-##### Basic Algebraic Data Type
--An algebraic data type (ADT) has one or more data constructors,-
--and each data constructor can have zero or more arguments.-
-* -Create data Vegetable = Celery | Carrot Color-
-* -Create a function that takes a Vegetable and gives a Color-
-	* -vegetableColor :: Vegetable -> Color-
-* -Create a function that takes a Vegetable and give a String of the color-
-	* -vegetableToString :: Vegetable -> String-
+data Color
+  = Blue
+  | Green
+  | Red
 
-##### Polymorphic Algebraic data type
-  * -Create a data called Keep that has two constructors =Shoebox a | Safe a-
-  * -Create function takeOut :: Keep a -> a-
-	* -Put a Red Carrot into a ShoeBox(Keep) and write out what its type would be-
-	* -Create a ShoeBox Carrot and write out what its type would be-
+colorToString :: Color -> String
+colorToString col =
+  case col of
+    Green -> "Green"
+    Blue -> "Blue"
+    Red -> "Red"
 
-##### Create your own function
-* Make Maybe
-	* implement map for your Maybe
-  * create Functor instance for your Maybe
+data Vegetable
+  = Celery
+  | Carrot Color
 
-* Make List
-	* implement map for your List
-  * create Functor instance for your List
+vegToColor :: Vegetable -> Color
+vegToColor veg =
+  case veg of
+    Celery -> Green
+    Carrot col -> col
 
-##### Apply / Pure
-* pureMaybe :: a -> Maybe a
+vegtoString :: Vegetable -> String
+vegtoString veg =
+  colorToString $ vegToColor veg
 
-* pureList :: a -> [a]
+data Keep a
+  = ShoeBox a
+  | Safe a
 
-* members :: Maybe [String]
+takeOut :: Keep a -> a
+takeOut keep =
+  case keep of
+    ShoeBox insideShoebox -> insideShoebox
+    Safe insideSafe -> insideSafe
 
-* applyMaybe ::
+redCarrotShoebox :: Keep Vegetable
+redCarrotShoebox = ShoeBox $ Carrot Red
 
+shoeBoxCarrot :: Keep (Color -> Vegetable)
+shoeBoxCarrot = ShoeBox Carrot
+
+data MakeMaybe a
+  = NothingMaybe
+  | JustMaybe a
+
+mapMakeMaybe :: (a -> b) -> MakeMaybe a -> MakeMaybe b
+mapMakeMaybe func ma =
+  case ma of
+    NothingMaybe -> NothingMaybe
+    JustMaybe a -> JustMaybe $ func a
+
+instance Functor MakeMaybe where
+  fmap = mapMakeMaybe
+
+data MakeList a
+  = NothingList
+  | MakeList a (MakeList a)
+
+mapMakeList :: (a -> b) -> MakeList a -> MakeList b
+mapMakeList func lista =
+  case lista of
+    NothingList -> NothingList
+    MakeList x xs ->
+      MakeList (func x) (mapMakeList func xs)
+
+instance Functor MakeList where
+  fmap = mapMakeList
+
+pureMaybe :: a -> Maybe a
+pureMaybe a = Just a
+
+pureList :: a -> [a]
+pureList a = [a]
+
+members :: Maybe [String]
+members = Just ["asd","asd","sa"]
+
+applyMaybe :: Maybe (a -> b) -> Maybe a -> Maybe b
+applyMaybe mFun ma =
+  case mFun of
+    Nothing -> Nothing
+    Just func ->
+      case ma of
+        Nothing -> Nothing
+        Just a ->
+          Just $ func a
+
+applyList :: [a -> b] -> [a] -> [b]
+applyList listOfFunc listA =
+  case listOfFunc of
+    [] -> []
+    (func:restOfFuncs) ->
+      case listA of
+        [] -> []
+        (x:_) ->
+          func x : applyList restOfFuncs listA
+
+
+{-
 * applyList ::
 
 * applyZipList ::
@@ -172,7 +240,7 @@ Create Person record with Name Age BirthMonth
 3. validate Positive
   :: Int -> Maybe Int
 4. validate Age
-  :: String -> Maybe Age {useing val Number and val Positive}
+  :: String -> Maybe Age {useing 2 & 3}
 
 validate Length
   :: Age -> String -> Maybe String
@@ -181,11 +249,6 @@ validate Length
 validate Letter
   :: BirthMonth -> String -> Maybe String
     BirthMonth and NameString first letter match
-
-Flip coin to see what method to do first Bind or Do.
-Once complete one method, copy and paste function
-and replace with other method.
-Use bind operator
 
 validate Name
   :: BirthMonth -> Age -> String -> Maybe Name
@@ -196,3 +259,4 @@ validate Person
     {do useing valBirthMonth valAge valName}
 
 RUN BUILD FOR ERRORS
+-}
