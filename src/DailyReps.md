@@ -195,4 +195,23 @@ validate Person
   :: String -> String -> String -> Maybe Person
     {do useing valBirthMonth valAge valName}
 
+##### Let and In
+- Write out abstract let form
+- Calculate 8, using let to bind 4 to a name
+- Calculate 9, multiplying a let variable, three, by itself
+- Calculate 10 using two let expression, one for 5 and one for 2
+- Calculate 10 again using one let expression for both 5 and 2
+- Calculate 8 again, using a lambda to simulate let
+- Calculate 10 again, using a lambda to simulate let
+- Calculate 5 with a single let, start with two, multiplying by itself to get 4,
+  defining 1 and then adding that to four. (4 bindings in total, including 5 itself)
+- Calculate 5 again as above, but this time order the let bindings in
+  decreasing order of magnitude (starting with 5, ending with 1)
+- Build a list of 1000 ones by using a recursive let to build an infinite list
+  and then using `take 1000`
+- Build an infinite list of alternating ones and zeros using a mutually
+  recursive let
+- Use a let in a do expression. Add Just 1, 2, 3, and Just 4, binding each
+  one to a name using either let or `<-`
+
 RUN BUILD FOR ERRORS
