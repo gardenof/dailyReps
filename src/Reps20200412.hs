@@ -1,4 +1,4 @@
-module Reps20200409 () where
+module Reps20200412 () where
 
 {-
 let
@@ -22,7 +22,7 @@ nine =
   let
     three = 3
   in
-    three*3
+    three * three
 
 ten :: Int
 ten =
@@ -30,15 +30,15 @@ ten =
     five = 5
   in
     let
-      two =2
+      two = 2
     in
       five * two
 
 tenV2 :: Int
 tenV2 =
   let
-    five =5
-    two =2
+    five = 5
+    two = 2
   in
     five * two
 
@@ -48,7 +48,7 @@ eightLamada =
 
 tenLame :: Int
 tenLame =
-  (\two -> 5*two)2
+  (\two ->5*two)2
 
 calFiveV2 :: Int
 calFiveV2 =
@@ -80,6 +80,6 @@ oddTen = do
   one <- Just 1
   four <- Just 4
   let
-    two =2
-    three =3
+    two = 2
+    three = 3
   Just (one+two+three+four)
