@@ -44,9 +44,9 @@ sumAndProdPair mIntA mIntB = do
   intA <- mIntA
   intB <- mIntB
   let
-    sum  = intA +intB
-    prod = intA *intB
-  pure (sum,prod)
+    sumInts  = intA +intB
+    prodInts = intA *intB
+  pure (sumInts,prodInts)
 
 getLineAlias :: IO String
 getLineAlias = getLine

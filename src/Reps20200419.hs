@@ -42,9 +42,9 @@ sumPodPair mIntA mIntB = do
   intA <- mIntA
   intB <- mIntB
   let
-    sum = intA+intB
-    product = intA*intB
-  pure(sum,product)
+    sumInts = intA+intB
+    proInts = intA*intB
+  pure(sumInts,proInts)
 
 getLineIO :: IO String
 getLineIO =

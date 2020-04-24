@@ -27,7 +27,7 @@ bindList listA func =
   case listA of
     [] -> []
     (x:xs) ->
-      func x <> bindList listA func
+      func x <> bindList xs func
 
 bindMaybe :: Maybe a -> (a -> Maybe b) -> Maybe b
 bindMaybe listA func =
@@ -160,7 +160,7 @@ tenV2 =
 
 eightLamda :: Int
 eightLamda =
-  (\eight -> eight*1)8
+  (\eightL -> eightL*1)8
 
 tenLamda :: Int
 tenLamda =
