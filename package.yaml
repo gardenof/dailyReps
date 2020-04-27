@@ -22,31 +22,13 @@ description:         Please see the README on GitHub at <https://github.com/gith
 dependencies:
 - base >= 4.7 && < 5
 - text
+- containers
+- free
 
 library:
   source-dirs: src
 
-executables:
-  dailyReps-exe:
-    main:                Main.hs
-    source-dirs:         app
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    - -Wall
-    - -Werror
-    - -fno-warn-unused-top-binds
-    dependencies:
-    - dailyReps
-
-tests:
-  dailyReps-test:
-    main:                Spec.hs
-    source-dirs:         test
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - dailyReps
+ghc-options:
+  -Wall
+  -Werror
+  -fno-warn-unused-top-binds
