@@ -1,7 +1,10 @@
 # daily-reps
 
+current streak 6 days
+
 | Day | Reps | Time |
 |-|-|-|
+| 2020-05-18 (Mon)  | 29 | ~60mins  |
 | 2020-05-17 (Sun)  | 29 | ~50mins  |
 | 2020-05-16 (Sat)  | 29 | ~60mins  |
 | 2020-05-15 (Fri)  | 29 | ~45mins  |
