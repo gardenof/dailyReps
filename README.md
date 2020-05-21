@@ -4,6 +4,8 @@ current streak 7 days
 
 | Day | Reps | Time |
 |-|-|-|
+| 2020-05-21 (Thur) | 29 | ~45mins  |
+| 2020-05-20 (Wed)  | 29 | ~45mins  |
 | 2020-05-19 (Tue)  | 29 | ~45mins  |
 | 2020-05-18 (Mon)  | 29 | ~60mins  |
 | 2020-05-17 (Sun)  | 29 | ~50mins  |
