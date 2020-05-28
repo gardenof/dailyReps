@@ -1,9 +1,10 @@
 # daily-reps
 
-current streak 15 days
+current streak 16 days
 
 | Day | Reps | Time |
 |-|-|-|
+| 2020-05-28 (Thur) | 34 | ~90mins  |
 | 2020-05-27 (Wed)  | 27 | ~70mins  |
 | 2020-05-26 (Tue)  | 30 | ~60mins  |
 | 2020-05-25 (Mon)  | 29 | ~60mins  |
