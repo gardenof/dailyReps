@@ -1,9 +1,10 @@
 # daily-reps
 
-current streak 18 days
+current streak 19 days
 
 | Day | Reps | Time |
 |-|-|-|
+| 2020-05-31 (Sun)  | 36 | ~75mins  |
 | 2020-05-30 (Sat)  | 34 | ~70mins  |
 | 2020-05-29 (Fri)  | 34 | ~60mins  |
 | 2020-05-28 (Thur) | 34 | ~90mins  |
