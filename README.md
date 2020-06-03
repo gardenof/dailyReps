@@ -1,9 +1,10 @@
 # daily-reps
 
-current streak 21 days
+current streak 22 days
 
 | Day | Reps | Time |
 |-|-|-|
+| 2020-06-03 (Wed)  | 36 | ~75mins  |
 | 2020-06-02 (Tue)  | 36 | ~60mins  |
 | 2020-06-01 (Mon)  | 36 | ~60mins  |
 | 2020-05-31 (Sun)  | 36 | ~75mins  |
