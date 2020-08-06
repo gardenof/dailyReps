@@ -36,7 +36,7 @@ allSumAndProducts as bs = do
 monadicSumAndProduct :: Monad m => m Int -> m Int -> m (Int, Int)
 monadicSumAndProduct mA mB = do
   a <- mA
-  b <- mb
+  b <- mB
 
   let
     sumAB     = a+b
