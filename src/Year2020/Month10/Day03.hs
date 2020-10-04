@@ -1,4 +1,4 @@
-module Year2020.Month10.Day02 where
+module Year2020.Month10.Day03 where
 
 import qualified Data.List as List
 
@@ -71,8 +71,7 @@ shortenNameWithRemainder :: String -> (String,String)
 shortenNameWithRemainder = splitAt 7
 
 isEnglishVowel :: Char -> Bool
-isEnglishVowel char =
-  elem char "AaEeIiOoUu"
+isEnglishVowel char = elem char "AaEeIiOoUu"
 
 dropLeadingVowels :: String -> String
 dropLeadingVowels = dropWhile isEnglishVowel
